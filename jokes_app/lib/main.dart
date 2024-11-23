@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jokes_app/jokes_app_main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,16 +10,9 @@ class MyApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Jokes App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Jokes App'),
-        ),
-        body: const Center(
-          child: Text('Hello, World!'),
-        ),
-      ),
+      home: JokesAppMainPage(),
     );
   }
 }
