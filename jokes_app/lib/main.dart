@@ -26,17 +26,26 @@ class JokesAppMainPage extends StatefulWidget {
 }
 
 class _JokesAppMainPageState extends State<JokesAppMainPage> {
-  List<String> jokes = ["", "", ""];
+  List<String> jokes = [];
+  bool isLoading = false;
 
   Future<void> fetchJokes() async {
+    setState(() {
+      isLoading = true;
+    });
+
     JokeService jokeService = JokeService();
     try {
       List<String> fetchedJokes = await jokeService.fetchJokes();
       setState(() {
         jokes = fetchedJokes;
+        isLoading = false;
       });
     } catch (e) {
       print(e);
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
@@ -48,30 +57,32 @@ class _JokesAppMainPageState extends State<JokesAppMainPage> {
         backgroundColor: Colors.purple,
       ),
       backgroundColor: Colors.lightBlue[50],
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const Text(
-                  'Welcome to the jokes app!',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Text(
-                  'Click the button below to generate a joke!',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-                GenerateJokesButton(onPressed: fetchJokes),
-              ],
+            const Text(
+              'Welcome to the jokes app!',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            JokeList(jokes: jokes),
+            const SizedBox(height: 10),
+            const Text(
+              'Click the button below to generate a joke!',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+            const SizedBox(height: 20),
+            GenerateJokesButton(onPressed: fetchJokes),
+            const SizedBox(height: 20),
+            if (isLoading)
+              const Center(child: CircularProgressIndicator())
+            else
+              Expanded(child: JokeList(jokes: jokes)),
           ],
         ),
       ),
