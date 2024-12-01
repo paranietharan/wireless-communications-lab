@@ -1,16 +1,19 @@
-# jokes_app
+# Jokes App
 
-A new Flutter project.
+A Flutter project that fetches and displays jokes from the JokeAPI.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application that uses the JokeAPI to fetch and display jokes.
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Fetch jokes from [JokeAPI](https://jokeapi.dev/)
+- Display jokes in a user-friendly interface
+- Generate new jokes with a button click
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![App Screenshot](screenshots/Screenshot_01.png)
+
+## Demo Video
+
+[Watch the Demo Video](demo_videos/jokes_app_video.mp4)
