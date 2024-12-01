@@ -54,7 +54,7 @@ class _JokesAppMainPageState extends State<JokesAppMainPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Jokes App'),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.white,
       ),
       backgroundColor: Colors.lightBlue[50],
       body: Center(
