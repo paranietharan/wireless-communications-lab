@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 class JokeService {
   Future<List<String>> fetchJokes() async {
@@ -20,7 +21,9 @@ class JokeService {
         throw Exception('Failed to load jokes');
       }
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
       throw Exception('Failed to load jokes');
     }
   }
