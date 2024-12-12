@@ -8,6 +8,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +23,10 @@ class MyApp extends StatelessWidget {
 }
 
 class JokesAppMainPage extends StatefulWidget {
+  const JokesAppMainPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _JokesAppMainPageState createState() => _JokesAppMainPageState();
 }
 
