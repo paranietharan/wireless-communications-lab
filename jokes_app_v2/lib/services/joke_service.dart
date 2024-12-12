@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:math';
@@ -25,7 +26,10 @@ class JokeService {
         }
       }
     } catch (e) {
-      print('Error loading cached jokes: $e');
+      // if it is on debug mode, print the error
+      if (kDebugMode) {
+        print('Error loading cached jokes: $e');
+      }
     }
     return [];
   }

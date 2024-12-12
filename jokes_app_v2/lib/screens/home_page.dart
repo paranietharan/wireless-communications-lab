@@ -78,13 +78,13 @@ class _HomePageState extends State<HomePage>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.sentiment_dissatisfied,
             size: 64,
             color: Colors.grey,
           ),
-          SizedBox(height: 16),
-          Text(
+          const SizedBox(height: 16),
+          const Text(
             'No jokes available',
             style: TextStyle(
               fontSize: 20,
@@ -92,13 +92,13 @@ class _HomePageState extends State<HomePage>
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           ElevatedButton.icon(
             onPressed: fetchJokes,
-            icon: Icon(Icons.refresh),
-            label: Text('Try Again'),
+            icon: const Icon(Icons.refresh),
+            label: const Text('Try Again'),
             style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -121,12 +121,12 @@ class _HomePageState extends State<HomePage>
         onRefresh: fetchJokes,
         child: SafeArea(
           child: _isLoading
-              ? Center(child: CircularProgressIndicator())
+              ? const Center(child: CircularProgressIndicator())
               : jokes.isEmpty
                   ? _buildEmptyState()
                   : ListView.builder(
-                      physics: AlwaysScrollableScrollPhysics(),
-                      padding: EdgeInsets.symmetric(vertical: 8),
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
                       itemCount: jokes.length,
                       itemBuilder: (context, index) {
                         return JokeCard(
