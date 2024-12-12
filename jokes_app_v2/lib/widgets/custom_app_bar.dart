@@ -46,7 +46,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Row(
         children: [
-          Text(
+          const Text(
             'Jokes',
             style: TextStyle(
               fontSize: 28,
@@ -62,7 +62,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
           ),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Text(
             'App',
             style: TextStyle(
@@ -79,7 +79,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           animation: refreshController,
           builder: (context, child) {
             return IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.refresh,
                 color: Colors.white,
                 size: 28,
@@ -89,10 +89,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             );
           },
         ),
-        SizedBox(width: 8),
+        const SizedBox(width: 8),
       ],
       bottom: PreferredSize(
-        preferredSize: Size.fromHeight(4.0),
+        preferredSize: const Size.fromHeight(4.0),
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -111,5 +111,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight + 4.0);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 4.0);
 }
