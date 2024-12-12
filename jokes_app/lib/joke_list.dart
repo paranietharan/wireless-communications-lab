@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class JokeList extends StatelessWidget {
   final List<String> jokes;
 
-  const JokeList({Key? key, required this.jokes}) : super(key: key);
+  const JokeList({super.key, required this.jokes});
 
   @override
   Widget build(BuildContext context) {

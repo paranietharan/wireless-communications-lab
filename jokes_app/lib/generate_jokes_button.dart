@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class GenerateJokesButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const GenerateJokesButton({Key? key, required this.onPressed}) : super(key: key);
+  const GenerateJokesButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +11,9 @@ class GenerateJokesButton extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.grey),
-          padding: MaterialStateProperty.all(const EdgeInsets.all(10.0)),
-          shape: MaterialStateProperty.all(
+          backgroundColor: WidgetStateProperty.all(Colors.grey),
+          padding: WidgetStateProperty.all(const EdgeInsets.all(10.0)),
+          shape: WidgetStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
             ),
