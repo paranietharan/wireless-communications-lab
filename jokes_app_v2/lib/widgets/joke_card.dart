@@ -6,18 +6,18 @@ class JokeCard extends StatelessWidget {
   final int index;
 
   const JokeCard({
-    Key? key,
+    super.key,
     required this.joke,
     required this.index,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       opacity: 1.0,
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
         child: Card(
           elevation: 4,
           shape: RoundedRectangleBorder(
@@ -36,7 +36,7 @@ class JokeCard extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -48,7 +48,7 @@ class JokeCard extends StatelessWidget {
                       color: Colors.blue.shade900,
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     joke.punchline,
                     style: TextStyle(
