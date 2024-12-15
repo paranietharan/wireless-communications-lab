@@ -35,6 +35,7 @@ jokes_app/
 │   ├── widgets/          # Custom reusable widgets
 │   ├── services/         # API service and local caching logic
 │   └── models/           # Data models for jokes
+|── assets/               # Assests like images for app
 ├── pubspec.yaml          # Project dependencies and metadata
 └── README.md             # Project documentation
 
