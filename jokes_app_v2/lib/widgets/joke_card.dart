@@ -6,61 +6,67 @@ class JokeCard extends StatelessWidget {
   final int index;
 
   const JokeCard({
-    super.key,
+    Key? key,
     required this.joke,
     required this.index,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 500),
-      opacity: 1.0,
+    return Card(
+      elevation: 4,
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-        child: Card(
-          elevation: 4,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.blue.shade100, Colors.blue.shade300],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Colors.white,
-                  Colors.blue.shade50,
-                ],
+          borderRadius: BorderRadius.circular(15),
+        ),
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Joke #${index + 1}',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue.shade900,
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    joke.setup,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue.shade900,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    joke.punchline,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.blue.shade700,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                ],
+            SizedBox(height: 10),
+            Text(
+              joke.fullJoke,
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.blue.shade800,
               ),
             ),
-          ),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.favorite_border, color: Colors.red),
+                  onPressed: () {
+                    // action when 2 press heart
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.share, color: Colors.blue.shade900),
+                  onPressed: () {
+                    // action when 2 press share
+                  },
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
