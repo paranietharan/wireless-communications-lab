@@ -11,8 +11,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   final JokeService _jokeService = JokeService();
   List<Joke> jokes = [];
   bool _isLoading = false;
@@ -78,13 +77,13 @@ class _HomePageState extends State<HomePage>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
+          Icon(
             Icons.sentiment_dissatisfied,
             size: 64,
             color: Colors.grey,
           ),
-          const SizedBox(height: 16),
-          const Text(
+          SizedBox(height: 16),
+          Text(
             'No jokes available',
             style: TextStyle(
               fontSize: 20,
@@ -92,13 +91,13 @@ class _HomePageState extends State<HomePage>
               fontWeight: FontWeight.w500,
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8),
           ElevatedButton.icon(
             onPressed: fetchJokes,
-            icon: const Icon(Icons.refresh),
-            label: const Text('Try Again'),
+            icon: Icon(Icons.refresh),
+            label: Text('Try Again'),
             style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -117,26 +116,36 @@ class _HomePageState extends State<HomePage>
         onRefresh: fetchJokes,
         refreshController: _refreshIconController,
       ),
-      body: RefreshIndicator(
-        onRefresh: fetchJokes,
-        child: SafeArea(
-          child: _isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : jokes.isEmpty
-                  ? _buildEmptyState()
-                  : ListView.builder(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      itemCount: jokes.length,
-                      itemBuilder: (context, index) {
-                        return JokeCard(
-                          key: ValueKey(jokes[index].hashCode),
-                          joke: jokes[index],
-                          index: index,
-                        );
-                      },
-                    ),
-        ),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(
+              'assets/background.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          RefreshIndicator(
+            onRefresh: fetchJokes,
+            child: SafeArea(
+              child: _isLoading
+                  ? Center(child: CircularProgressIndicator())
+                  : jokes.isEmpty
+                      ? _buildEmptyState()
+                      : ListView.builder(
+                          physics: AlwaysScrollableScrollPhysics(),
+                          padding: EdgeInsets.symmetric(vertical: 8),
+                          itemCount: jokes.length,
+                          itemBuilder: (context, index) {
+                            return JokeCard(
+                              key: ValueKey(jokes[index].hashCode),
+                              joke: jokes[index],
+                              index: index,
+                            );
+                          },
+                        ),
+            ),
+          ),
+        ],
       ),
     );
   }
