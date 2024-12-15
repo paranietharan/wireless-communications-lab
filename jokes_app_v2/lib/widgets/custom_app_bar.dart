@@ -34,11 +34,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             elevation: 2,
             shape: CircleBorder(),
             child: CircleAvatar(
-              backgroundColor: Colors.white,
-              child: Icon(
-                Icons.emoji_emotions,
-                color: Colors.blue.shade800,
-                size: 24,
+              // backgroundColor: Colors.white,
+              child: Image.asset(
+                'assets/smile.png',
+                fit: BoxFit.cover,
+                width: 70,
+                height: 70,
               ),
             ),
           ),
